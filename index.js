@@ -1,6 +1,6 @@
 const express = require("express") 
 const handlebars = require("express-handlebars") 
-const port = 9999
+const port = process.env.PORT || 3000
 const url = 'https://www.jadlog.com.br/embarcador/api/pedido/incluir'
 const axios = require('axios');
 const token = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOjEwMTI4NSwiZHQiOiIyMDIxMDgyNiJ9.iz3wx0P7e5tw2zpvCVlfNkcKAZZTZxmGF-aqKCNwaVA'
