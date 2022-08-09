@@ -37,7 +37,7 @@ app.post('/add', (req, res) => {
        totValor:        req.body.valor,
        obs:             "INTEGRACAO API ITAMARATI",
        modalidade:      3,
-       contaCorrente:   "",//"101285",
+       contaCorrente:   "030004",//"101285",
        tpColeta:        "K",
        tipoFrete:       0,
        cdUnidadeOri:    "1596",
