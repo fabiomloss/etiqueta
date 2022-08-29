@@ -2,6 +2,7 @@ const express = require("express")
 const handlebars = require("express-handlebars") 
 const port = process.env.PORT || 3000
 const url = 'https://www.jadlog.com.br/embarcador/api/pedido/incluir'
+const urldel = 'https://www.jadlog.com.br/embarcador/api/pedido/cancelar'
 const axios = require('axios');
 const token = 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOjEwMTI4NSwiZHQiOiIyMDIxMDgyNiJ9.iz3wx0P7e5tw2zpvCVlfNkcKAZZTZxmGF-aqKCNwaVA'
 var n = 1
@@ -25,6 +26,10 @@ app.get('/', (request, response) => {
 
 app.get('/inserir', (request, response) => {
     response.render('forminserir')
+})
+
+app.get('/cancelar', (request, response) => {
+    response.render('formcancelar')
 })
 
 app.post('/add', (req, res) => {
@@ -116,6 +121,35 @@ app.post('/add', (req, res) => {
       
 })
       
+
+app.post('/del', (req, res) => {
+
+    let body = 
+    {
+       codigo:          [req.body.numEtiqueta]
+    }
+    
+    axios.post(urldel,body,{headers: {'Authorization': token}})
+    .then(function(response){
+        console.log(response.data)
+        res.send(response.data)
+    })
+    .catch(function(error){
+        if(error.response)
+        {
+            let {status,statusText} = error.response;
+            console.log(status,statusText)
+        }
+        })
+      
+})
+
+
+
+
+
+
+
 app.listen(port, () =>{
     console.log('Servidor Executando na porta '+ port)
 })
