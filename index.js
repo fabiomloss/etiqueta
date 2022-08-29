@@ -126,7 +126,7 @@ app.post('/del', (req, res) => {
 
     let body = 
     {
-       codigo:          [req.body.numEtiqueta]
+       codigo: req.body.numEtiqueta
     }
     
     axios.post(urldel,body,{headers: {'Authorization': token}})
